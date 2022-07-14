@@ -13,4 +13,5 @@ public interface SchoolService {
      * @return the persisted entity.
      */
     SchoolDTO save(SchoolDTO schoolDTO);
+
 }
