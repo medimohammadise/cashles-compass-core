@@ -4,6 +4,7 @@ package com.ecanteen.service.impl;
 import com.ecanteen.domain.Student;
 import com.ecanteen.domain.enumeration.ROLE;
 import com.ecanteen.repository.StudentRepository;
+import com.ecanteen.service.StudentServiceImpl;
 import com.ecanteen.service.dto.StudentDTO;
 import com.ecanteen.service.mapper.StudentMapper;
 import org.junit.Test;
