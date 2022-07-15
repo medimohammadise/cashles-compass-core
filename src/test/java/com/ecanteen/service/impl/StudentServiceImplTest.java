@@ -32,6 +32,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class StudentServiceImplTest {
 
+    /***
+     * Unit Test for Student Api
+     */
+
+
+    //create some data for test instead of talk to database using repository.
 
     private static final String DEFAULT_FULLNAME = "AAAAAAAAAA";
 
@@ -76,6 +82,8 @@ public class StudentServiceImplTest {
     private static final AtomicLong count = new AtomicLong(random.nextInt() + (2L * Integer.MAX_VALUE));
 
 
+
+    //Provide dependencies of StudentService
     private StudentServiceImpl studentServiceImpl;
 
     private StudentRepository studentRepository;
@@ -90,15 +98,19 @@ public class StudentServiceImplTest {
 
     private Student student;
 
-//    @Autowired
-//    public StudentServiceImplTest(StudentServiceImpl studentServiceImpl, StudentRepository studentRepository, EntityManager em, MockMvc mockMvc, StudentMapper studentMapper, Student student) {
-//        this.studentServiceImpl = studentServiceImpl;
-//        this.studentRepository = studentRepository;
-//        this.em = em;
-//        this.mockMvc = mockMvc;
-//        this.studentMapper = studentMapper;
-//        this.student = student;
-//    }
+
+    //setUp instance of dependecies once for each of tests method
+
+    @BeforeEach
+    void setUp() {
+        student = createEntity(em);
+        studentRepository = Mockito.mock(StudentRepository.class);
+        studentMapper = Mockito.mock(StudentMapper.class);
+        studentServiceImpl = new StudentServiceImpl(studentRepository, studentMapper);
+    }
+
+
+    //create data for test
 
     public static Student createEntity(EntityManager em) {
         Student student = new Student();
@@ -119,18 +131,17 @@ public class StudentServiceImplTest {
         return student;
     }
 
-    @BeforeEach
-    void setUp() {
-        student = createEntity(em);
-        studentRepository = Mockito.mock(StudentRepository.class);
-        studentMapper = Mockito.mock(StudentMapper.class);
-        studentServiceImpl = new StudentServiceImpl(studentRepository, studentMapper);
-    }
+
+
 
     @Test
     void shouldReturnAllStudents() {
 
+        //we have three sections for tets
 
+
+        //arrange
+        //in this section we prepare required things
         List<Student> studentList = new ArrayList<>();
         studentList.add(student);
         studentList.add(student);
@@ -141,9 +152,15 @@ public class StudentServiceImplTest {
         StudentDTO studentDTO2 = new StudentDTO();
         studentDTO2.setId(2L);
 
+
+        //act
+        //in this section we invoke method of services for test
         List<StudentDTO> studentDTOList = new ArrayList<>();
         studentDTOList.add(studentDTO1);
         studentDTOList.add(studentDTO2);
+
+        //asser
+        //and finally we write this section To get the result we expect
 
         Mockito.when(studentMapper.toDto(student)).thenReturn(studentDTO1);
         Mockito.when(studentMapper.toDto(student)).thenReturn(studentDTO2);
