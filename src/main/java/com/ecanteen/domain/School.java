@@ -47,14 +47,6 @@ public class School implements Serializable {
     @Column(name = "modified_by")
     private String modifiedBy;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role")
-    private ROLE role;
-
-
-
-    // jhipster-needle-entity-add-field - JHipster will add fields here
-
     public Long getId() {
         return this.id;
     }

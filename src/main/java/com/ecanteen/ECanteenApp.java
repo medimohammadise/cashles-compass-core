@@ -11,10 +11,10 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @SpringBootApplication
 @EnableConfigurationProperties({LiquibaseProperties.class,ApplicationProperties.class})
-public class Application {
+public class ECanteenApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(ECanteenApp.class, args);
 
         try (Connection conn = DriverManager.getConnection(
             "jdbc:postgresql://127.0.0.1:5432/test", "postgres", "password")) {
