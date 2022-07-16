@@ -4,7 +4,7 @@ package com.ecanteen.service.impl;
 import com.ecanteen.domain.Student;
 import com.ecanteen.domain.enumeration.ROLE;
 import com.ecanteen.repository.StudentRepository;
-import com.ecanteen.service.StudentServiceImpl;
+
 import com.ecanteen.service.dto.StudentDTO;
 import com.ecanteen.service.mapper.StudentMapper;
 import org.junit.Test;
@@ -75,7 +75,7 @@ public class StudentServiceImplTest {
     private static final String UPDATED_CREATED_BY = "BBBBBBBBBB";
     private static final String DEFAULT_MODIFIED_BY = "AAAAAAAAAA";
     private static final String UPDATED_MODIFIED_BY = "BBBBBBBBBB";
-    private static final ROLE DEFAULT_ROLE = ROLE.ROLE_SCHOOL;
+    private static final ROLE DEFAULT_ROLE = ROLE.ROLE_STUDENT;
     private static final ROLE UPDATED_ROLE = ROLE.ROLE_STUDENT;
 
     private static final Random random = new Random();
@@ -85,7 +85,7 @@ public class StudentServiceImplTest {
 
 
     //Provide dependencies of StudentService
-    private StudentServiceImpl studentServiceImpl;
+    private com.ecanteen.service.impl.StudentServiceImpl studentServiceImpl;
 
     private StudentRepository studentRepository;
 
@@ -107,7 +107,7 @@ public class StudentServiceImplTest {
         student = createEntity(em);
         studentRepository = Mockito.mock(StudentRepository.class);
         studentMapper = Mockito.mock(StudentMapper.class);
-        studentServiceImpl = new StudentServiceImpl(studentRepository, studentMapper);
+        studentServiceImpl = new com.ecanteen.service.impl.StudentServiceImpl(studentRepository, studentMapper);
     }
 
 
@@ -120,7 +120,7 @@ public class StudentServiceImplTest {
         student.setPhoneNumber(DEFAULT_PHONE_NUMBER);
         student.setImageUrl(DEFAULT_IMAGEURL);
         student.setAddress(DEFAULT_ADDRESS);
-        student.setIsEnabled(DEFAULT_ISENABLED);
+        student.setEnabled(DEFAULT_ISENABLED);
         student.setPhoneVerified(DEFAULT_PHONE_VERIFIED);
         student.setEmailVerified(DEFAULT_EMAIL_VERIFIED);
         student.setCreatedDate(DEFAULT_CREATED_DATE);
@@ -192,7 +192,7 @@ public class StudentServiceImplTest {
         partialUpdatedStudent.setEmailVerified(UPDATED_EMAIL_VERIFIED);
         partialUpdatedStudent.setPhoneVerified(UPDATED_PHONE_VERIFIED);
         partialUpdatedStudent.setImageUrl(UPDATED_IMAGEURL);
-        partialUpdatedStudent.setIsEnabled(UPDATED_ISENABLED);
+        partialUpdatedStudent.setEnabled(UPDATED_ISENABLED);
         partialUpdatedStudent.setEmail(UPDATED_EMAIL);
         partialUpdatedStudent.setPhoneNumber(UPDATED_PHONE_NUMBER);
         partialUpdatedStudent.setKkUesId(UPDATED_KK_USE_ID);

@@ -29,10 +29,10 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "student")
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
+//@Getter
+//@Setter
+//@ToString
+//@RequiredArgsConstructor
 
 public class Student implements Serializable {
 
@@ -95,19 +95,14 @@ public class Student implements Serializable {
     private ROLE role;
 
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return Objects.equals(id, student.id) && Objects.equals(fullName, student.fullName) && Objects.equals(email, student.email) && Objects.equals(phoneNumber, student.phoneNumber) && Objects.equals(address, student.address) && Objects.equals(imageUrl, student.imageUrl) && Objects.equals(isEnabled, student.isEnabled) && Objects.equals(phoneVerified, student.phoneVerified) && Objects.equals(emailVerified, student.emailVerified) && Objects.equals(KkUesId, student.KkUesId) && Objects.equals(createdDate, student.createdDate) && Objects.equals(modifiedDate, student.modifiedDate) && Objects.equals(CreatedBy, student.CreatedBy) && Objects.equals(modifiedBy, student.modifiedBy) && role == student.role;
+    public Long getId() {
+        return id;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, fullName, email, phoneNumber, address, imageUrl, isEnabled, phoneVerified, emailVerified, KkUesId, createdDate, modifiedDate, CreatedBy, modifiedBy, role);
+    public void setId(Long id) {
+        this.id = id;
     }
+
 
     public String getFullName() {
         return fullName;
@@ -116,6 +111,193 @@ public class Student implements Serializable {
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
+
+    public Student fullName(String fullName) {
+        this.setFullName(fullName);
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public Student email(String email) {
+        this.setEmail(email);
+        return this;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Student phoneNumber(String phoneNumber) {
+        this.setPhoneNumber(phoneNumber);
+        return this;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+
+    public Student address(String address) {
+        this.setAddress(address);
+        return this;
+    }
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+
+    public Student imageUrl(String imageUrl) {
+        this.setImageUrl(imageUrl);
+        return this;
+    }
+    public Boolean getEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        isEnabled = enabled;
+    }
+
+    public Student enabled(Boolean enabled) {
+        this.setEnabled(enabled);
+        return this;
+    }
+
+    public Boolean getPhoneVerified() {
+        return phoneVerified;
+    }
+
+    public void setPhoneVerified(Boolean phoneVerified) {
+        this.phoneVerified = phoneVerified;
+    }
+
+    public Student phoneVerified(Boolean phoneVerified) {
+        this.setPhoneVerified(phoneVerified);
+        return this;
+    }
+
+    public Boolean getEmailVerified() {
+        return emailVerified;
+    }
+
+    public void setEmailVerified(Boolean emailVerified) {
+        this.emailVerified = emailVerified;
+    }
+    public Student emailVerified(Boolean emailVerified) {
+        this.setEmailVerified(emailVerified);
+        return this;
+    }
+
+
+    public String getKkUesId() {
+        return KkUesId;
+    }
+
+    public void setKkUesId(String kkUesId) {
+        KkUesId = kkUesId;
+    }
+
+    public Student kkUesId(String kkUesId) {
+        this.setKkUesId(kkUesId);
+        return this;
+    }
+
+    public ZonedDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(ZonedDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Student createdDate(ZonedDateTime createdDate) {
+        this.setCreatedDate(createdDate);
+        return this;
+    }
+    public ZonedDateTime getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(ZonedDateTime modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
+    public Student modifiedDate(ZonedDateTime modifiedDate) {
+        this.setModifiedDate(modifiedDate);
+        return this;
+    }
+    public String getCreatedBy() {
+        return CreatedBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        CreatedBy = createdBy;
+    }
+
+    public Student createdBy(String createdBy) {
+        this.setCreatedBy(createdBy);
+        return this;
+    }
+
+    public String getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
+    public Student modifiedBy(String modifiedBy) {
+        this.setModifiedBy(modifiedBy);
+        return this;
+    }
+    public ROLE getRole() {
+        return role;
+    }
+
+    public void setRole(ROLE role) {
+        this.role = role;
+    }
+
+    public Student role(String role) {
+        this.setRole(ROLE.valueOf(role));
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Student)) {
+            return false;
+        }
+        return id != null && id.equals(((Student) o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
+
 
 }
 
