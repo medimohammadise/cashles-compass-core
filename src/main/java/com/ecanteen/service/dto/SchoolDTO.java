@@ -1,6 +1,5 @@
 package com.ecanteen.service.dto;
 
-import com.ecanteen.domain.enumeration.ROLE;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
@@ -30,7 +29,13 @@ public class SchoolDTO implements Serializable {
 
     private String modifiedBy;
 
-    private ROLE role;
+    public SchoolDTO(int i, String s) {
+    }
+
+    public SchoolDTO() {
+
+    }
+
 
     public Long getId() {
         return id;
@@ -110,14 +115,6 @@ public class SchoolDTO implements Serializable {
 
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
-    }
-
-    public ROLE getRole() {
-        return role;
-    }
-
-    public void setRole(ROLE role) {
-        this.role = role;
     }
 
     @Override

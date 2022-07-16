@@ -1,13 +1,9 @@
 package com.ecanteen.domain;
 
-import com.ecanteen.domain.enumeration.ROLE;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import javax.persistence.*;
 
-/**
- * A School.
- */
 @Entity
 @Table(name = "school")
 public class School implements Serializable {
@@ -56,8 +52,9 @@ public class School implements Serializable {
         return this;
     }
 
-    public void setId(Long id) {
+    public long setId(Long id) {
         this.id = id;
+        return 0;
     }
 
     public String getName() {

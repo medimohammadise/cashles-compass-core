@@ -28,12 +28,11 @@ import java.util.Objects;
 
 
 @Entity
-@Table(name = "student")
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
-
+@Table(name = "student")
 public class Student implements Serializable {
 
     private static final long serialVersionUID = 1L;
