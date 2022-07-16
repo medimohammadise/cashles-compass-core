@@ -1,13 +1,9 @@
 package com.ecanteen.domain;
 
-import com.ecanteen.domain.enumeration.ROLE;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import javax.persistence.*;
 
-/**
- * A School.
- */
 @Entity
 @Table(name = "school")
 public class School implements Serializable {
@@ -47,14 +43,6 @@ public class School implements Serializable {
     @Column(name = "modified_by")
     private String modifiedBy;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role")
-    private ROLE role;
-
-
-
-    // jhipster-needle-entity-add-field - JHipster will add fields here
-
     public Long getId() {
         return this.id;
     }
@@ -64,8 +52,9 @@ public class School implements Serializable {
         return this;
     }
 
-    public void setId(Long id) {
+    public long setId(Long id) {
         this.id = id;
+        return 0;
     }
 
     public String getName() {

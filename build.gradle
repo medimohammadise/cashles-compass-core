@@ -13,6 +13,7 @@ plugins {
     id 'com.gorylenko.gradle-git-properties'
     id 'com.github.ben-manes.versions'
     id "com.github.sherter.google-java-format"
+    id "org.liquibase.gradle" version "2.1.1"
     id "org.sonarqube" apply false
 }
 apply from: "gradle/code-quality.gradle"
@@ -29,6 +30,13 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+    all {
+        resolutionStrategy {
+            // Inherited version from Spring Boot can't be used because of regressions:
+            // To be removed as soon as spring-boot use the same version
+            force 'org.liquibase:liquibase-core:4.6.1'
+        }
+    }
 }
 
 repositories {
@@ -37,9 +45,11 @@ repositories {
 }
 
 dependencies {
+
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.7.1'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     compileOnly 'org.projectlombok:lombok'
@@ -50,17 +60,60 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.postgresql:postgresql'
     implementation 'org.liquibase:liquibase-core'
+    liquibaseRuntime "org.postgresql:postgresql"
+    liquibaseRuntime "org.liquibase:liquibase-core"
+    liquibaseRuntime "org.liquibase.ext:liquibase-hibernate5:4.11.0"
+    liquibaseRuntime sourceSets.main.compileClasspath
     implementation "org.springdoc:springdoc-openapi-ui:${springdoc_openapi_version}"
     implementation "org.zalando:problem-spring-web-starter:${problem_spring_web_version}"
     implementation "org.apache.commons:commons-lang3:${commons_lang_version}"
     implementation "commons-io:commons-io:${commons_io_version}"
-    implementation group: 'org.postgresql', name: 'postgresql', version: '9.3-1100-jdbc4'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.4.0'
+    implementation 'org.mapstruct:mapstruct:1.5.2.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.2.Final'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     testImplementation "org.projectlombok:lombok"
     testImplementation "org.awaitility:awaitility:${awaitility_version}"
     testImplementation "org.testcontainers:junit-jupiter"
     testImplementation "org.testcontainers:postgresql"
     testImplementation "org.testcontainers:localstack"
+    testImplementation "org.testcontainers:postgresql"
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "org.springframework.security:spring-security-test"
+    testImplementation "org.springframework.boot:spring-boot-test"
+    testImplementation group: 'io.quarkus', name: 'quarkus-junit5', version: '2.10.1.Final'
+    testImplementation "com.h2database:h2"
+}
+project.ext.diffChangelogFile = "src/main/resources/db/migration/changelog/" + new Date().format("yyyyMMddHHmmss") + "liquibase-changelog.xml"
+
+liquibase {
+    activities {
+        main {
+            driver "org.postgresql.Driver"
+            url "jdbc:postgresql://localhost:5432/e_canteen"
+            username "postgres"
+            password "1234"
+            changeLogFile "src/main/resources/config/liquibase/liquibase-changelog.xml"
+            defaultSchemaName ""
+            logLevel "debug"
+            classpath "src/main/resources/"
+        }
+        diffLog {
+            driver "org.postgresql.Driver"
+            url "jdbc:postgresql://localhost:5432/e_canteen"
+            username "postgres"
+            password "1234"
+            changeLogFile project.ext.diffChangelogFile
+            referenceUrl "hibernate:spring:com.mycompany.myapp.domain?dialect=tech.jhipster.domain.util.FixedPostgreSQL10Dialect&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
+            defaultSchemaName ""
+            logLevel "debug"
+            classpath "$buildDir/classes/java/main"
+            excludeObjects "oauth_access_token, oauth_approvals, oauth_client_details, oauth_client_token, oauth_code, oauth_refresh_token"
+        }
+    }
 }
 
 dependencyManagement {

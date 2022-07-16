@@ -1,17 +1,21 @@
 package com.ecanteen.service.dto;
 
+
+import com.ecanteen.domain.enumeration.ROLE;
+
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+
 import java.util.Objects;
 
 /**
- * A DTO for the {@link com.ecanteen.domain.School} entity.
+ * A DTO for the {@link com.ecanteen.domain.Student} entity.
  */
-public class SchoolDTO implements Serializable {
+public class StudentDTO implements Serializable {
+
 
     private Long id;
-
-    private String name;
+    private String fullName;
 
     private String email;
 
@@ -19,22 +23,25 @@ public class SchoolDTO implements Serializable {
 
     private String address;
 
-    private String kkUseId;
+    private String imageUrl;
+
+    private Boolean isEnabled;
+
+    private Boolean phoneVerified;
+
+    private Boolean emailVerified;
+
+    private String KkUesId;
 
     private ZonedDateTime createdDate;
 
     private ZonedDateTime modifiedDate;
 
-    private String createdBy;
+    private String CreatedBy;
 
     private String modifiedBy;
 
-    public SchoolDTO(int i, String s) {
-    }
-
-    public SchoolDTO() {
-
-    }
+    private ROLE role;
 
 
     public Long getId() {
@@ -45,12 +52,12 @@ public class SchoolDTO implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -77,12 +84,44 @@ public class SchoolDTO implements Serializable {
         this.address = address;
     }
 
-    public String getKkUseId() {
-        return kkUseId;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setKkUseId(String kkUseId) {
-        this.kkUseId = kkUseId;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public Boolean getEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        isEnabled = enabled;
+    }
+
+    public Boolean getPhoneVerified() {
+        return phoneVerified;
+    }
+
+    public void setPhoneVerified(Boolean phoneVerified) {
+        this.phoneVerified = phoneVerified;
+    }
+
+    public Boolean getEmailVerified() {
+        return emailVerified;
+    }
+
+    public void setEmailVerified(Boolean emailVerified) {
+        this.emailVerified = emailVerified;
+    }
+
+    public String getKkUesId() {
+        return KkUesId;
+    }
+
+    public void setKkUesId(String kkUesId) {
+        this.KkUesId = kkUesId;
     }
 
     public ZonedDateTime getCreatedDate() {
@@ -102,11 +141,11 @@ public class SchoolDTO implements Serializable {
     }
 
     public String getCreatedBy() {
-        return createdBy;
+        return CreatedBy;
     }
 
     public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
+        CreatedBy = createdBy;
     }
 
     public String getModifiedBy() {
@@ -117,6 +156,15 @@ public class SchoolDTO implements Serializable {
         this.modifiedBy = modifiedBy;
     }
 
+    public ROLE getRole() {
+        return role;
+    }
+
+    public void setRole(ROLE role) {
+        this.role = role;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -126,11 +174,11 @@ public class SchoolDTO implements Serializable {
             return false;
         }
 
-        SchoolDTO schoolDTO = (SchoolDTO) o;
+        StudentDTO studentDTO = (StudentDTO) o;
         if (this.id == null) {
             return false;
         }
-        return Objects.equals(this.id, schoolDTO.id);
+        return Objects.equals(this.id, studentDTO.id);
     }
 
     @Override
@@ -138,3 +186,4 @@ public class SchoolDTO implements Serializable {
         return Objects.hash(this.id);
     }
 }
+
