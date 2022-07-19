@@ -4,7 +4,7 @@ package com.ecanteen.domain.enumeration;
  * The Category enumeration.
  */
 public enum Category {
-    PIZA,
+    PIZZA,
     SANDWICH,
     DRINK,
     EATS,

@@ -4,6 +4,7 @@ import com.ecanteen.domain.enumeration.ROLE;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import javax.persistence.*;
+import javax.validation.Constraint;
 
 /**
  * A School.
@@ -19,6 +20,8 @@ public class School implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     @Column(name = "id")
     private Long id;
+
+
 
     @Column(name = "name")
     private String name;
