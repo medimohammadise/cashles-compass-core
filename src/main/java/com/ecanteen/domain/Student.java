@@ -20,6 +20,8 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /***
@@ -93,6 +95,9 @@ public class Student implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private ROLE role;
+
+
+    private List<Order> orderList = new ArrayList<Order>();
 
 
     public Long getId() {
@@ -280,6 +285,10 @@ public class Student implements Serializable {
     public Student role(String role) {
         this.setRole(ROLE.valueOf(role));
         return this;
+    }
+
+    public List<Order> getOrderList() {
+        return orderList;
     }
 
     @Override

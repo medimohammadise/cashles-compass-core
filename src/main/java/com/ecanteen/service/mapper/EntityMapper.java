@@ -2,6 +2,7 @@ package com.ecanteen.service.mapper;
 
 
 
+import com.ecanteen.domain.Menu;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.Named;
