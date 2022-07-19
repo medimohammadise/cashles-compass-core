@@ -33,7 +33,7 @@ public class Order {
     private ZonedDateTime modifiedDate;
 
 
-
+    private List<Product> productList = new ArrayList<Product>();
 
 
     public Long getId() {
@@ -106,6 +106,10 @@ public class Order {
         this.modifiedDate = modifiedDate;
     }
 
+
+    public List<Product> getProductList() {
+        return productList;
+    }
 
     @Override
     public boolean equals(Object o) {

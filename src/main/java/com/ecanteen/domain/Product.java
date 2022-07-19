@@ -76,7 +76,13 @@ public class Product implements Serializable {
     private String modifiedBy;
 
 
+    private List<Menu> menuList =new ArrayList<Menu>();
 
+
+    private List<ProductCategory> productCategoryList = new ArrayList<ProductCategory>();
+
+
+    private List<Order> orderList =new ArrayList<Order>();
 
 
     public Long getId() {
@@ -235,6 +241,18 @@ public class Product implements Serializable {
         this.modifiedBy = modifiedBy;
     }
 
+
+    public List<Menu> getMenuList() {
+        return menuList;
+    }
+
+    public List<ProductCategory> getProductCategoryList() {
+        return productCategoryList;
+    }
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
 
     @Override
     public boolean equals(Object o) {

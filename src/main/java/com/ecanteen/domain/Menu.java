@@ -40,6 +40,8 @@ public class Menu {
 
 
 
+    private List<Product> productList = new ArrayList<Product>();
+
 
     public Long getId() {
         return id;
@@ -102,8 +104,9 @@ public class Menu {
         return this;
     }
 
-
-
+    public List<Product> getProductList() {
+        return productList;
+    }
 
     public void setModifiedDate(ZonedDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;

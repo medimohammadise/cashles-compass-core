@@ -36,7 +36,7 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Autowired
-    public ProductServiceImpl( ProductMapper productMapper, ProductRepository productRepository) {
+    public ProductServiceImpl(  ProductRepository productRepository, ProductMapper productMapper) {
         this.productRepository = productRepository;
         this.productMapper = productMapper;
     }
