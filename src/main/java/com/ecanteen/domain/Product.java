@@ -7,9 +7,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -76,14 +81,31 @@ public class Product implements Serializable {
     private String modifiedBy;
 
 
-    private List<Menu> menuList =new ArrayList<Menu>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "menu_id", nullable = false)
+    private Menu menu;
 
 
-    private List<ProductCategory> productCategoryList = new ArrayList<ProductCategory>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "productCategory_id", nullable = false)
+    private ProductCategory productCategory;
 
 
-    private List<Order> orderList =new ArrayList<Order>();
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "productCategory_id", nullable = false)
+    private ProductCategory product_Category;
 
+    public ProductCategory getProductCategory() {
+        return productCategory;
+    }
+
+    public ProductCategory getProduct_Category() {
+        return product_Category;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
 
     public Long getId() {
         return id;
@@ -241,18 +263,6 @@ public class Product implements Serializable {
         this.modifiedBy = modifiedBy;
     }
 
-
-    public List<Menu> getMenuList() {
-        return menuList;
-    }
-
-    public List<ProductCategory> getProductCategoryList() {
-        return productCategoryList;
-    }
-
-    public List<Order> getOrderList() {
-        return orderList;
-    }
 
     @Override
     public boolean equals(Object o) {

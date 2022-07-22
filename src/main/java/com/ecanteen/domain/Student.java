@@ -6,23 +6,29 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /***
  * A Student
@@ -96,9 +102,15 @@ public class Student implements Serializable {
     @Column(name = "role")
     private ROLE role;
 
+    @OneToMany(cascade = CascadeType.ALL,
+        fetch = FetchType.LAZY,
+        mappedBy = "student")
 
-    private List<Order> orderList = new ArrayList<Order>();
+    private Set<Order> product = new HashSet<>();
 
+    public Set<Order> getProduct() {
+        return product;
+    }
 
     public Long getId() {
         return id;
@@ -287,9 +299,7 @@ public class Student implements Serializable {
         return this;
     }
 
-    public List<Order> getOrderList() {
-        return orderList;
-    }
+
 
     @Override
     public boolean equals(Object o) {

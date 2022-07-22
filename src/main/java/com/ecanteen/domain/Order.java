@@ -2,9 +2,12 @@ package com.ecanteen.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.time.ZonedDateTime;
@@ -32,9 +35,16 @@ public class Order {
     @Column(name = "modifiedDate")
     private ZonedDateTime modifiedDate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student student;
 
-    private List<Product> productList = new ArrayList<Product>();
 
+
+
+    public Student getStudent() {
+        return student;
+    }
 
     public Long getId() {
         return id;
@@ -107,9 +117,6 @@ public class Order {
     }
 
 
-    public List<Product> getProductList() {
-        return productList;
-    }
 
     @Override
     public boolean equals(Object o) {

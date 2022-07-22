@@ -3,17 +3,23 @@ package com.ecanteen.domain;
 
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * A ProductCategory
@@ -43,8 +49,23 @@ public class ProductCategory implements Serializable {
     private String modifiedBy;
 
 
-    private List<Product> productList =new ArrayList<Product>();
+    @OneToMany(cascade = CascadeType.ALL,
+        fetch = FetchType.LAZY,
+        mappedBy = "productCategory")
+    private Set<Product> product = new HashSet<>();
 
+    @OneToOne(mappedBy = "productCategory", fetch = FetchType.LAZY,
+        cascade = CascadeType.ALL)
+    private Product productObject;
+
+
+    public Product getProductObject() {
+        return productObject;
+    }
+
+    public Set<Product> getProduct() {
+        return product;
+    }
 
     public Long getId() {
         return id;
@@ -127,9 +148,6 @@ public class ProductCategory implements Serializable {
         return this;
     }
 
-    public List<Product> getProductList() {
-        return productList;
-    }
 
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;

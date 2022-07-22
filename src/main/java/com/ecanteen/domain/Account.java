@@ -1,59 +1,47 @@
 package com.ecanteen.domain;
 
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-/**
- * A Menu
- */
 
 @Entity
-@Table(name = "menu")
+@Table(name = "account")
+public class Account implements Serializable {
 
-public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     @Column(name = "id")
-    private Long id;
-    @Column(name = "name")
-    private String name;
-    @Column(name = "code")
-    private String code;
+    private  Long id ;
+
+
+    @Column(name ="accountNumber")
+    private String accountNumber;
+
+
+    @Column(name ="accountName")
+    private String accountName;
+
     @Column(name = "createdDate")
     private ZonedDateTime createdDate;
+
+
     @Column(name = "modifiedDate")
     private ZonedDateTime modifiedDate;
 
-    @OneToMany(cascade = CascadeType.ALL,
-        fetch = FetchType.LAZY,
-        mappedBy = "menu")
-    private Set<Product> product = new HashSet<>();
-
-
-    public Set<Product> getProduct() {
-        return product;
-    }
 
     public Long getId() {
         return id;
     }
 
-    public Menu id(Long id) {
+    public Account id(Long id) {
         this.setId(id);
         return this;
     }
@@ -62,37 +50,38 @@ public class Menu {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public Menu name(String name) {
-        this.setName(name);
+    public Account accountNumber(String accountNumber) {
+        this.setAccountNumber(accountNumber);
         return this;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
-    public String getCode() {
-        return code;
+
+    public String getAccountName() {
+        return accountName;
     }
 
-    public Menu code(String code) {
-        this.setCode(code);
+    public Account accountName(String accountName) {
+        this.setAccountName(accountName);
         return this;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
 
     public ZonedDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public Menu createdDate(ZonedDateTime createdDate) {
+    public Account createdDate(ZonedDateTime createdDate) {
         this.setCreatedDate(createdDate);
         return this;
     }
@@ -105,13 +94,11 @@ public class Menu {
         return modifiedDate;
     }
 
-    public Menu modifiedDate(ZonedDateTime modifiedDate) {
+
+    public Account modifiedDate(ZonedDateTime modifiedDate) {
         this.setModifiedDate(modifiedDate);
         return this;
     }
-
-
-
     public void setModifiedDate(ZonedDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
@@ -121,10 +108,10 @@ public class Menu {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Menu)) {
+        if (!(o instanceof Account)) {
             return false;
         }
-        return id != null && id.equals(((Menu) o).id);
+        return id != null && id.equals(((Account) o).id);
     }
 
     @Override
