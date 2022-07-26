@@ -1,25 +1,19 @@
 package com.ecanteen.domain;
 
-import com.ecanteen.domain.enumeration.ROLE;
-
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
-
 import java.util.Objects;
 
 /***
@@ -89,23 +83,17 @@ public class Student implements Serializable {
     private String modifiedBy;
 
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role")
-    private ROLE role;
-
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return Objects.equals(id, student.id) && Objects.equals(fullName, student.fullName) && Objects.equals(email, student.email) && Objects.equals(phoneNumber, student.phoneNumber) && Objects.equals(address, student.address) && Objects.equals(imageUrl, student.imageUrl) && Objects.equals(isEnabled, student.isEnabled) && Objects.equals(phoneVerified, student.phoneVerified) && Objects.equals(emailVerified, student.emailVerified) && Objects.equals(KkUesId, student.KkUesId) && Objects.equals(createdDate, student.createdDate) && Objects.equals(modifiedDate, student.modifiedDate) && Objects.equals(CreatedBy, student.CreatedBy) && Objects.equals(modifiedBy, student.modifiedBy) && role == student.role;
+        return Objects.equals(id, student.id) && Objects.equals(fullName, student.fullName) && Objects.equals(email, student.email) && Objects.equals(phoneNumber, student.phoneNumber) && Objects.equals(address, student.address) && Objects.equals(imageUrl, student.imageUrl) && Objects.equals(isEnabled, student.isEnabled) && Objects.equals(phoneVerified, student.phoneVerified) && Objects.equals(emailVerified, student.emailVerified) && Objects.equals(KkUesId, student.KkUesId) && Objects.equals(createdDate, student.createdDate) && Objects.equals(modifiedDate, student.modifiedDate) && Objects.equals(CreatedBy, student.CreatedBy) && Objects.equals(modifiedBy, student.modifiedBy);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fullName, email, phoneNumber, address, imageUrl, isEnabled, phoneVerified, emailVerified, KkUesId, createdDate, modifiedDate, CreatedBy, modifiedBy, role);
+        return Objects.hash(id, fullName, email, phoneNumber, address, imageUrl, isEnabled, phoneVerified, emailVerified, KkUesId, createdDate, modifiedDate, CreatedBy, modifiedBy);
     }
 
     public String getFullName() {
