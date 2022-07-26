@@ -54,7 +54,7 @@ dependencies {
     implementation "org.zalando:problem-spring-web-starter:${problem_spring_web_version}"
     implementation "org.apache.commons:commons-lang3:${commons_lang_version}"
     implementation "commons-io:commons-io:${commons_io_version}"
-    implementation group: 'org.postgresql', name: 'postgresql', version: '9.3-1100-jdbc4'
+    implementation "org.postgresql:postgresql:${postgres_version}"
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     testImplementation "org.projectlombok:lombok"
     testImplementation "org.awaitility:awaitility:${awaitility_version}"
