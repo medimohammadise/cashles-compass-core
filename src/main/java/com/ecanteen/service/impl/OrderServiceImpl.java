@@ -1,9 +1,10 @@
-package com.ecanteen.service;
+package com.ecanteen.service.impl;
 
 import com.ecanteen.domain.Order;
 
 import com.ecanteen.repository.OrderRepository;
 
+import com.ecanteen.service.OrderService;
 import com.ecanteen.service.dto.OrderDTO;
 
 import com.ecanteen.service.mapper.OrderMapper;
@@ -13,12 +14,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 /**
  * Service Interface for managing {@link com.ecanteen.domain.Order}.
  */
+
+@Service
+@Transactional
 public class OrderServiceImpl implements OrderService {
 
     private final Logger log = LoggerFactory.getLogger(OrderServiceImpl.class);

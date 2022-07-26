@@ -1,9 +1,10 @@
-package com.ecanteen.service;
+package com.ecanteen.service.impl;
 
 import com.ecanteen.domain.ProductCategory;
 
 import com.ecanteen.repository.ProductCategoryRepository;
 
+import com.ecanteen.service.ProductCategoryService;
 import com.ecanteen.service.dto.ProductCategoryDTO;
 
 import com.ecanteen.service.mapper.ProductCategoryMapper;

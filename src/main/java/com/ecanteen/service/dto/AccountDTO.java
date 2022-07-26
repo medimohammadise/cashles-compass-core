@@ -1,24 +1,28 @@
 package com.ecanteen.service.dto;
 
 
+import com.ecanteen.domain.Parent;
+
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-public class AccountDTO  implements Serializable {
+public class AccountDTO implements Serializable {
 
-    private  Long id ;
-
-
-     private String accountNumber;
+    private Long id;
 
 
-     private String AccountName;
-
-     private ZonedDateTime createdDate;
+    private String accountNumber;
 
 
-     private ZonedDateTime modifiedDate;
+    private String AccountName;
+
+    private ZonedDateTime createdDate;
+
+
+    private ZonedDateTime modifiedDate;
+
+
 
 
     public Long getId() {
@@ -81,7 +85,6 @@ public class AccountDTO  implements Serializable {
     public int hashCode() {
         return Objects.hash(this.id);
     }
-
 
 
 }

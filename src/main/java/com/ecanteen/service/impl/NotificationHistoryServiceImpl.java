@@ -1,8 +1,9 @@
-package com.ecanteen.service;
+package com.ecanteen.service.impl;
 
 
 import com.ecanteen.domain.NotificationHistory;
 import com.ecanteen.repository.NotificationHistoryRepository;
+import com.ecanteen.service.NotificationHistoryService;
 import com.ecanteen.service.dto.NotificationHistoryDTO;
 import com.ecanteen.service.mapper.NotificationHistoryMapper;
 import org.slf4j.Logger;

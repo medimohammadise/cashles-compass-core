@@ -1,8 +1,9 @@
-package com.ecanteen.service;
+package com.ecanteen.service.impl;
 
 
 import com.ecanteen.domain.ActivationCode;
 import com.ecanteen.repository.ActivationCodeRepository;
+import com.ecanteen.service.ActivationCodeService;
 import com.ecanteen.service.dto.ActivationCodeDTO;
 import com.ecanteen.service.mapper.ActivationCodeMapper;
 import org.slf4j.Logger;

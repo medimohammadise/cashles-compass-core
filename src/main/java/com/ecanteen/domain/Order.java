@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "order")
-public class Order {
+public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
@@ -35,16 +36,13 @@ public class Order {
     @Column(name = "modifiedDate")
     private ZonedDateTime modifiedDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "student_id", nullable = false)
-    private Student student;
+
+//    @ManyToOne(optional = false)
+//    @JoinColumn(name = "Student_Id")
+//    private Student student;
 
 
 
-
-    public Student getStudent() {
-        return student;
-    }
 
     public Long getId() {
         return id;
@@ -115,6 +113,15 @@ public class Order {
     public void setModifiedDate(ZonedDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
+
+
+//    public Student getStudent() {
+//        return student;
+//    }
+//
+//    public void setStudent(Student student) {
+//        this.student = student;
+//    }
 
 
 

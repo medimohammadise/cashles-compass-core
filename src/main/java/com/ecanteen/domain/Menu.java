@@ -1,6 +1,8 @@
 package com.ecanteen.domain;
 
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -24,7 +27,7 @@ import java.util.Set;
 @Entity
 @Table(name = "menu")
 
-public class Menu {
+public class Menu implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
@@ -39,15 +42,9 @@ public class Menu {
     @Column(name = "modifiedDate")
     private ZonedDateTime modifiedDate;
 
-    @OneToMany(cascade = CascadeType.ALL,
-        fetch = FetchType.LAZY,
-        mappedBy = "menu")
-    private Set<Product> product = new HashSet<>();
 
-
-    public Set<Product> getProduct() {
-        return product;
-    }
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Product> products = null;
 
     public Long getId() {
         return id;
@@ -111,6 +108,13 @@ public class Menu {
     }
 
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
 
     public void setModifiedDate(ZonedDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;

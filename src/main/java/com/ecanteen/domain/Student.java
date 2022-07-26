@@ -102,15 +102,9 @@ public class Student implements Serializable {
     @Column(name = "role")
     private ROLE role;
 
-    @OneToMany(cascade = CascadeType.ALL,
-        fetch = FetchType.LAZY,
-        mappedBy = "student")
 
-    private Set<Order> product = new HashSet<>();
-
-    public Set<Order> getProduct() {
-        return product;
-    }
+//    @OneToMany(cascade = CascadeType.ALL)
+//    private List<Order> orders = null;
 
     public Long getId() {
         return id;
@@ -141,6 +135,7 @@ public class Student implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
     public Student email(String email) {
         this.setEmail(email);
         return this;
@@ -172,6 +167,7 @@ public class Student implements Serializable {
         this.setAddress(address);
         return this;
     }
+
     public String getImageUrl() {
         return imageUrl;
     }
@@ -185,6 +181,7 @@ public class Student implements Serializable {
         this.setImageUrl(imageUrl);
         return this;
     }
+
     public Boolean getEnabled() {
         return isEnabled;
     }
@@ -218,6 +215,7 @@ public class Student implements Serializable {
     public void setEmailVerified(Boolean emailVerified) {
         this.emailVerified = emailVerified;
     }
+
     public Student emailVerified(Boolean emailVerified) {
         this.setEmailVerified(emailVerified);
         return this;
@@ -249,6 +247,7 @@ public class Student implements Serializable {
         this.setCreatedDate(createdDate);
         return this;
     }
+
     public ZonedDateTime getModifiedDate() {
         return modifiedDate;
     }
@@ -261,6 +260,7 @@ public class Student implements Serializable {
         this.setModifiedDate(modifiedDate);
         return this;
     }
+
     public String getCreatedBy() {
         return CreatedBy;
     }
@@ -286,6 +286,7 @@ public class Student implements Serializable {
         this.setModifiedBy(modifiedBy);
         return this;
     }
+
     public ROLE getRole() {
         return role;
     }
@@ -299,7 +300,13 @@ public class Student implements Serializable {
         return this;
     }
 
-
+//    public List<Order> getOrders() {
+//        return orders;
+//    }
+//
+//    public void setOrders(List<Order> orders) {
+//        this.orders = orders;
+//    }
 
     @Override
     public boolean equals(Object o) {

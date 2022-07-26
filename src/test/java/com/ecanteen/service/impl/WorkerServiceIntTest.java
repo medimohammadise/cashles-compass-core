@@ -3,6 +3,7 @@ package com.ecanteen.service.impl;
 
 import com.ecanteen.domain.Worker;
 
+import com.ecanteen.domain.enumeration.ROLE;
 import com.ecanteen.repository.WorkerRepository;
 import com.ecanteen.service.dto.WorkerDTO;
 
@@ -62,6 +63,10 @@ public class WorkerServiceIntTest {
     private static final String DEFAULT_MODIFIED_BY = "AAAAAAAAAA";
     private static final String UPDATED_MODIFIED_BY = "BBBBBBBBBB";
 
+    private static final ROLE DEFAULT_ROLE = ROLE.ROLE_WORKER;
+
+    private static final ROLE UPDATED_ROLE = ROLE.ROLE_WORKER;
+
     private static final Random random = new Random();
 
     private static final AtomicLong count = new AtomicLong(random.nextInt() + (2L * Integer.MAX_VALUE));
@@ -90,6 +95,7 @@ public class WorkerServiceIntTest {
         worker.setModifiedDate(DEFAULT_MODIFIED_DATE);
         worker.setCreatedBy(DEFAULT_CREATED_BY);
         worker.setModifiedBy(DEFAULT_MODIFIED_BY);
+        worker.setRole(DEFAULT_ROLE);
 
         return worker;
     }
@@ -121,7 +127,9 @@ public class WorkerServiceIntTest {
             .createdDate(UPDATED_CREATED_DATE)
             .modifiedDate(UPDATED_MODIFIED_DATE)
             .createdBy(UPDATED_CREATED_BY)
-            .modifiedBy(UPDATED_MODIFIED_BY);
+            .modifiedBy(UPDATED_MODIFIED_BY)
+            .role(String.valueOf(UPDATED_ROLE));
+
 
         WorkerDTO workerDTO = workerMapper.toDto(updatedWorker);
 

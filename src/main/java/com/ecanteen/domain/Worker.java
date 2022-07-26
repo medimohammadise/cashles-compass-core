@@ -1,15 +1,22 @@
 package com.ecanteen.domain;
 
 
+import com.ecanteen.domain.enumeration.ROLE;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 /***
  * A Worker
@@ -62,6 +69,16 @@ public class Worker implements Serializable {
 
     @Column(name = "modifiedBy")
     private String modifiedBy;
+
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private ROLE role;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<ActivationCode> activationCode = null;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<UserCredential> userCredential = null;
 
 
     public Long getId() {
@@ -219,6 +236,44 @@ public class Worker implements Serializable {
         this.modifiedBy = modifiedBy;
     }
 
+
+    public Boolean getApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(Boolean approved) {
+        isApproved = approved;
+    }
+
+    public List<ActivationCode> getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(List<ActivationCode> activationCode) {
+        this.activationCode = activationCode;
+    }
+
+    public List<UserCredential> getUserCredential() {
+        return userCredential;
+    }
+
+    public void setUserCredential(List<UserCredential> userCredential) {
+        this.userCredential = userCredential;
+    }
+
+
+    public ROLE getRole() {
+        return role;
+    }
+
+    public Worker role(String role) {
+        this.setRole(ROLE.valueOf(role));
+        return this;
+    }
+
+    public void setRole(ROLE role) {
+        this.role = role;
+    }
 
     @Override
     public boolean equals(Object o) {

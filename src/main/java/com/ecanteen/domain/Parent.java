@@ -2,6 +2,7 @@ package com.ecanteen.domain;
 
 import com.ecanteen.domain.enumeration.ROLE;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,10 +10,14 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 
 /***
@@ -79,6 +84,13 @@ public class Parent implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private ROLE role;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<School> schools = null;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "School_Id")
+    private School school;
 
 
 
@@ -274,6 +286,23 @@ public class Parent implements Serializable {
     public Parent role(String role) {
         this.setRole(ROLE.valueOf(role));
         return this;
+    }
+
+
+    public List<School> getSchools() {
+        return schools;
+    }
+
+    public void setSchools(List<School> schools) {
+        this.schools = schools;
+    }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
     }
 
 

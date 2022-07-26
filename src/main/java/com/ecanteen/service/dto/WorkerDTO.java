@@ -1,6 +1,8 @@
 package com.ecanteen.service.dto;
 
 
+import com.ecanteen.domain.enumeration.ROLE;
+
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
@@ -48,6 +50,17 @@ public class WorkerDTO implements Serializable {
 
     private String modifiedBy;
 
+
+    private ROLE role;
+
+
+    public ROLE getRole() {
+        return role;
+    }
+
+    public void setRole(ROLE role) {
+        this.role = role;
+    }
 
     public Long getId() {
         return id;

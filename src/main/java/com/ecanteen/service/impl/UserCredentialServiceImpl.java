@@ -1,11 +1,10 @@
-package com.ecanteen.service;
+package com.ecanteen.service.impl;
 
   import com.ecanteen.domain.UserCredential;
-  import com.ecanteen.domain.UserGroup;
   import com.ecanteen.repository.UserCredentialRepository;
+  import com.ecanteen.service.UserCredentialService;
   import com.ecanteen.service.dto.UserCredentialDTO;
   import com.ecanteen.service.mapper.UserCredentialMapper;
-  import com.ecanteen.service.mapper.UserGroupMapper;
   import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

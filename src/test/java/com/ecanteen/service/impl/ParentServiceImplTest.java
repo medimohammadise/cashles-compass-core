@@ -3,7 +3,6 @@ package com.ecanteen.service.impl;
 import com.ecanteen.domain.Parent;
 import com.ecanteen.domain.enumeration.ROLE;
 import com.ecanteen.repository.ParentRepository;
-import com.ecanteen.service.ParentServiceImpl;
 import com.ecanteen.service.dto.ParentDTO;
 import com.ecanteen.service.mapper.ParentMapper;
 import org.junit.Test;
@@ -64,8 +63,8 @@ public class ParentServiceImplTest {
     private static final String UPDATED_CREATED_BY = "BBBBBBBBBB";
     private static final String DEFAULT_MODIFIED_BY = "AAAAAAAAAA";
     private static final String UPDATED_MODIFIED_BY = "BBBBBBBBBB";
-    private static final ROLE DEFAULT_ROLE = ROLE.ROLE_STUDENT;
-    private static final ROLE UPDATED_ROLE = ROLE.ROLE_STUDENT;
+    private static final ROLE DEFAULT_ROLE = ROLE.ROLE_PARENT;
+    private static final ROLE UPDATED_ROLE = ROLE.ROLE_PARENT;
 
     private static final Random random = new Random();
 

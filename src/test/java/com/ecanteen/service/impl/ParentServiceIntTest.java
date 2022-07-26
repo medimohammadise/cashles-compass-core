@@ -65,9 +65,8 @@ public class ParentServiceIntTest {
     private static final String DEFAULT_MODIFIED_BY = "AAAAAAAAAA";
     private static final String UPDATED_MODIFIED_BY = "BBBBBBBBBB";
 
-    private static final ROLE DEFAULT_ROLE = ROLE.ROLE_STUDENT;
-
-    private static final ROLE UPDATED_ROLE = ROLE.ROLE_STUDENT;
+    private static final ROLE DEFAULT_ROLE = ROLE.ROLE_PARENT;
+    private static final ROLE UPDATED_ROLE = ROLE.ROLE_PARENT;
 
     private Parent parent;
 

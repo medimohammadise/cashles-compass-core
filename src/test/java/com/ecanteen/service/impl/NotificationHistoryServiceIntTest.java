@@ -5,7 +5,6 @@ package com.ecanteen.service.impl;
 import com.ecanteen.domain.enumeration.NotificationMethod;
 import com.ecanteen.domain.enumeration.NotificationStatus;
  import com.ecanteen.repository.NotificationHistoryRepository;
-import com.ecanteen.service.NotificationHistoryServiceImpl;
  import com.ecanteen.service.dto.NotificationHistoryDTO;
 
 import com.ecanteen.service.mapper.NotificationHistoryMapper;

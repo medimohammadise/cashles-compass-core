@@ -4,8 +4,6 @@ import com.ecanteen.domain.ProductCategory;
 
 import com.ecanteen.repository.ProductCategoryRepository;
 
-import com.ecanteen.service.ProductCategoryServiceImpl;
-
 import com.ecanteen.service.dto.ProductCategoryDTO;
 
 import com.ecanteen.service.mapper.ProductCategoryMapper;

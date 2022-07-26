@@ -1,15 +1,9 @@
 package com.ecanteen.service.impl;
 
 import com.ecanteen.domain.ActivationCode;
-import com.ecanteen.domain.Menu;
 import com.ecanteen.repository.ActivationCodeRepository;
-import com.ecanteen.repository.MenuRepository;
-import com.ecanteen.service.ActivationCodeServiceImpl;
-import com.ecanteen.service.MenuServiceImpl;
 import com.ecanteen.service.dto.ActivationCodeDTO;
-import com.ecanteen.service.dto.MenuDTO;
 import com.ecanteen.service.mapper.ActivationCodeMapper;
-import com.ecanteen.service.mapper.MenuMapper;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
@@ -155,8 +149,8 @@ public class ActivationCodeServiceImplTest {
         partialUpdatedActivationCode.setCreatedBy(UPDATED_CREATED_BY);
 
 
-        MenuDTO menuDTO = org.mapstruct.factory.Mappers.getMapper(MenuMapper.class).toDto(partialUpdatedActivationCode);
-        Mockito.when(activationCodeMapper.toDto(partialUpdatedActivationCode)).thenReturn(menuDTO);
+        ActivationCodeDTO activationCodeDTO = org.mapstruct.factory.Mappers.getMapper(ActivationCodeMapper.class).toDto(partialUpdatedActivationCode);
+        Mockito.when(activationCodeMapper.toDto(partialUpdatedActivationCode)).thenReturn(activationCodeDTO);
         Mockito.when(activationCodeRepository.save(Mockito.any(ActivationCode.class)))
             .thenAnswer(i -> i.getArguments()[0]);
 

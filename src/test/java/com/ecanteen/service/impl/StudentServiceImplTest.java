@@ -6,6 +6,7 @@ import com.ecanteen.domain.enumeration.ROLE;
 import com.ecanteen.repository.StudentRepository;
 
 import com.ecanteen.service.dto.StudentDTO;
+import com.ecanteen.service.mapper.ParentMapper;
 import com.ecanteen.service.mapper.StudentMapper;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -85,7 +86,7 @@ public class StudentServiceImplTest {
 
 
     //Provide dependencies of StudentService
-    private com.ecanteen.service.impl.StudentServiceImpl studentServiceImpl;
+    private ParentMapper.StudentServiceImpl studentServiceImpl;
 
     private StudentRepository studentRepository;
 
@@ -107,7 +108,7 @@ public class StudentServiceImplTest {
         student = createEntity(em);
         studentRepository = Mockito.mock(StudentRepository.class);
         studentMapper = Mockito.mock(StudentMapper.class);
-        studentServiceImpl = new com.ecanteen.service.impl.StudentServiceImpl(studentRepository, studentMapper);
+        studentServiceImpl = new ParentMapper.StudentServiceImpl(studentRepository, studentMapper);
     }
 
 

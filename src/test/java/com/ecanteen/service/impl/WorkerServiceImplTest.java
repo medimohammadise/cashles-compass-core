@@ -1,8 +1,8 @@
 package com.ecanteen.service.impl;
 
 import com.ecanteen.domain.Worker;
+import com.ecanteen.domain.enumeration.ROLE;
 import com.ecanteen.repository.WorkerRepository;
-import com.ecanteen.service.WorkerServiceImpl;
 import com.ecanteen.service.dto.WorkerDTO;
 import com.ecanteen.service.mapper.WorkerMapper;
 import org.junit.Test;
@@ -57,6 +57,9 @@ public class WorkerServiceImplTest {
     private static final String UPDATED_CREATED_BY = "BBBBBBBBBB";
     private static final String DEFAULT_MODIFIED_BY = "AAAAAAAAAA";
     private static final String UPDATED_MODIFIED_BY = "BBBBBBBBBB";
+    private static final ROLE DEFAULT_ROLE = ROLE.ROLE_WORKER;
+
+    private static final ROLE UPDATED_ROLE = ROLE.ROLE_WORKER;
 
     private static final Random random = new Random();
 
@@ -100,6 +103,7 @@ public class WorkerServiceImplTest {
         worker.setModifiedDate(DEFAULT_MODIFIED_DATE);
         worker.setCreatedBy(DEFAULT_CREATED_BY);
         worker.setModifiedBy(DEFAULT_MODIFIED_BY);
+        worker.setRole(DEFAULT_ROLE);
 
         return worker;
     }
@@ -163,6 +167,7 @@ public class WorkerServiceImplTest {
         partialUpdatedWorker.setModifiedDate(UPDATED_MODIFIED_DATE);
         partialUpdatedWorker.setCreatedBy(UPDATED_CREATED_BY);
         partialUpdatedWorker.setModifiedBy(UPDATED_MODIFIED_BY);
+        partialUpdatedWorker.setRole(UPDATED_ROLE);
 
         WorkerDTO workerDTO = org.mapstruct.factory.Mappers.getMapper(WorkerMapper.class).toDto(partialUpdatedWorker);
         Mockito.when(workerMapper.toDto(partialUpdatedWorker)).thenReturn(workerDTO);
