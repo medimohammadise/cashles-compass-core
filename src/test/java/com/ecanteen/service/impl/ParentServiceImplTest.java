@@ -3,7 +3,6 @@ package com.ecanteen.service.impl;
 import com.ecanteen.domain.Parent;
 import com.ecanteen.domain.enumeration.ROLE;
 import com.ecanteen.repository.ParentRepository;
-import com.ecanteen.service.ParentServiceImpl;
 import com.ecanteen.service.dto.ParentDTO;
 import com.ecanteen.service.mapper.ParentMapper;
 import org.junit.Test;

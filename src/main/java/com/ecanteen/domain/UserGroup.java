@@ -18,14 +18,14 @@ public class UserGroup implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     @Column(name = "id")
-    private  Long id ;
+    private Long id;
 
 
-    @Column(name ="code")
+    @Column(name = "code")
     private String code;
 
 
-    @Column(name ="name")
+    @Column(name = "name")
     private String name;
 
     public Long getId() {

@@ -1,8 +1,9 @@
-package com.ecanteen.service;
+package com.ecanteen.service.impl;
 
 import com.ecanteen.domain.Menu;
 import com.ecanteen.repository.MenuRepository;
 
+import com.ecanteen.service.MenuService;
 import com.ecanteen.service.dto.MenuDTO;
 
 import com.ecanteen.service.mapper.MenuMapper;

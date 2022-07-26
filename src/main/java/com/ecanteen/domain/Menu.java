@@ -1,6 +1,8 @@
 package com.ecanteen.domain;
 
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,15 +41,9 @@ public class Menu {
     @Column(name = "modifiedDate")
     private ZonedDateTime modifiedDate;
 
-    @OneToMany(cascade = CascadeType.ALL,
-        fetch = FetchType.LAZY,
-        mappedBy = "menu")
-    private Set<Product> product = new HashSet<>();
 
-
-    public Set<Product> getProduct() {
-        return product;
-    }
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Product> products = null;
 
     public Long getId() {
         return id;
@@ -111,6 +107,13 @@ public class Menu {
     }
 
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
 
     public void setModifiedDate(ZonedDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;

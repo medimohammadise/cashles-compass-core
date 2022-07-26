@@ -1,7 +1,8 @@
-package com.ecanteen.service;
+package com.ecanteen.service.impl;
 
 import com.ecanteen.domain.Worker;
 import com.ecanteen.repository.WorkerRepository;
+import com.ecanteen.service.WorkerService;
 import com.ecanteen.service.dto.WorkerDTO;
 import com.ecanteen.service.mapper.WorkerMapper;
 import org.slf4j.Logger;

@@ -7,7 +7,6 @@ import com.ecanteen.domain.enumeration.Grade;
 
 import com.ecanteen.repository.ProductRepository;
 
-import com.ecanteen.service.ProductServiceImpl;
 import com.ecanteen.service.dto.ProductDTO;
 
 import com.ecanteen.service.mapper.ProductMapper;

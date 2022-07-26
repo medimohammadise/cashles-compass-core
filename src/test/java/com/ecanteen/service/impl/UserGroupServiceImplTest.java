@@ -2,7 +2,6 @@ package com.ecanteen.service.impl;
 
  import com.ecanteen.domain.UserGroup;
  import com.ecanteen.repository.UserGroupRepository;
- import com.ecanteen.service.UserGroupServiceImpl;
  import com.ecanteen.service.dto.UserGroupDTO;
 
 import com.ecanteen.service.mapper.UserGroupMapper;

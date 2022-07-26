@@ -35,16 +35,13 @@ public class Order {
     @Column(name = "modifiedDate")
     private ZonedDateTime modifiedDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "student_id", nullable = false)
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Student_Id")
     private Student student;
 
 
 
-
-    public Student getStudent() {
-        return student;
-    }
 
     public Long getId() {
         return id;
@@ -114,6 +111,15 @@ public class Order {
 
     public void setModifiedDate(ZonedDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
+    }
+
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
 

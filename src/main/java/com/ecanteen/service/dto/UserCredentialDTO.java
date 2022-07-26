@@ -1,7 +1,8 @@
 package com.ecanteen.service.dto;
 
  import java.io.Serializable;
-import java.util.Objects;
+ import java.time.ZonedDateTime;
+ import java.util.Objects;
 
 public class UserCredentialDTO implements Serializable {
     private Long id;
@@ -10,7 +11,7 @@ public class UserCredentialDTO implements Serializable {
      private String userName;
 
 
-     private String CreatedDate;
+     private ZonedDateTime CreatedDate;
 
     public Long getId() {
         return id;
@@ -28,11 +29,11 @@ public class UserCredentialDTO implements Serializable {
         this.userName = userName;
     }
 
-    public String getCreatedDate() {
+    public ZonedDateTime getCreatedDate() {
         return CreatedDate;
     }
 
-    public void setCreatedDate(String createdDate) {
+    public void setCreatedDate(ZonedDateTime createdDate) {
         CreatedDate = createdDate;
     }
 

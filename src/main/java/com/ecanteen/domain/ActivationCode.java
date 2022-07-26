@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -35,6 +37,10 @@ public class ActivationCode implements Serializable {
 
     @Column(name = "createdBy")
     private String createdBy;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Worker_Id")
+    private Worker worker;
 
 
     public Long getId() {
@@ -101,6 +107,16 @@ public class ActivationCode implements Serializable {
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
+
+
+    public Worker getWorker() {
+        return worker;
+    }
+
+    public void setWorker(Worker worker) {
+        this.worker = worker;
+    }
+
 
 
     @Override

@@ -3,6 +3,7 @@ package com.ecanteen.domain;
 import com.ecanteen.domain.enumeration.ROLE;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.List;
 import javax.persistence.*;
 import javax.validation.Constraint;
 
@@ -20,7 +21,6 @@ public class School implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     @Column(name = "id")
     private Long id;
-
 
 
     @Column(name = "name")
@@ -54,7 +54,12 @@ public class School implements Serializable {
     @Column(name = "role")
     private ROLE role;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Parent> parents = null;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Parent_Id")
+    private Parent parent;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -186,6 +191,31 @@ public class School implements Serializable {
 
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
+    }
+
+
+    public ROLE getRole() {
+        return role;
+    }
+
+    public void setRole(ROLE role) {
+        this.role = role;
+    }
+
+    public List<Parent> getParents() {
+        return parents;
+    }
+
+    public void setParents(List<Parent> parents) {
+        this.parents = parents;
+    }
+
+    public Parent getParent() {
+        return parent;
+    }
+
+    public void setParent(Parent parent) {
+        this.parent = parent;
     }
 
 

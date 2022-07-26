@@ -81,31 +81,16 @@ public class Product implements Serializable {
     private String modifiedBy;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "menu_id", nullable = false)
+    @ManyToOne(optional=false)
+    @JoinColumn(name="Menu_Id")
     private Menu menu;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "productCategory_id", nullable = false)
+    @ManyToOne(optional=false)
+    @JoinColumn(name="ProductCategory_Id")
     private ProductCategory productCategory;
 
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "productCategory_id", nullable = false)
-    private ProductCategory product_Category;
-
-    public ProductCategory getProductCategory() {
-        return productCategory;
-    }
-
-    public ProductCategory getProduct_Category() {
-        return product_Category;
-    }
-
-    public Menu getMenu() {
-        return menu;
-    }
 
     public Long getId() {
         return id;
@@ -262,6 +247,24 @@ public class Product implements Serializable {
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
     }
+
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public ProductCategory getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(ProductCategory productCategory) {
+        this.productCategory = productCategory;
+    }
+
 
 
     @Override

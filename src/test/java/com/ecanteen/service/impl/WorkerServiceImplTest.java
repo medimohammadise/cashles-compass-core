@@ -2,7 +2,6 @@ package com.ecanteen.service.impl;
 
 import com.ecanteen.domain.Worker;
 import com.ecanteen.repository.WorkerRepository;
-import com.ecanteen.service.WorkerServiceImpl;
 import com.ecanteen.service.dto.WorkerDTO;
 import com.ecanteen.service.mapper.WorkerMapper;
 import org.junit.Test;

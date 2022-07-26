@@ -1,7 +1,8 @@
-package com.ecanteen.service;
+package com.ecanteen.service.impl;
 
 import com.ecanteen.domain.Parent;
 import com.ecanteen.repository.ParentRepository;
+import com.ecanteen.service.ParentService;
 import com.ecanteen.service.dto.ParentDTO;
 import com.ecanteen.service.mapper.ParentMapper;
 import org.slf4j.Logger;

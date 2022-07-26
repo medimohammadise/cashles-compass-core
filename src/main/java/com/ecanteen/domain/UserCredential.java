@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -30,6 +32,11 @@ public class UserCredential implements Serializable {
 
     @Column(name = "CreatedDate")
     private ZonedDateTime CreatedDate;
+
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Worker_Id")
+    private Worker worker;
 
 
     public Long getId() {
@@ -59,8 +66,6 @@ public class UserCredential implements Serializable {
     }
 
 
-
-
     public ZonedDateTime getCreatedDate() {
         return CreatedDate;
     }
@@ -74,6 +79,16 @@ public class UserCredential implements Serializable {
     public void setCreatedDate(ZonedDateTime createdDate) {
         CreatedDate = createdDate;
     }
+
+
+    public Worker getWorker() {
+        return worker;
+    }
+
+    public void setWorker(Worker worker) {
+        this.worker = worker;
+    }
+
 
     @Override
     public boolean equals(Object o) {

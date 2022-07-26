@@ -1,15 +1,18 @@
 package com.ecanteen.domain;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 /***
  * A Worker
@@ -62,6 +65,12 @@ public class Worker implements Serializable {
 
     @Column(name = "modifiedBy")
     private String modifiedBy;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<ActivationCode> activationCode = null;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<UserCredential> userCredential = null;
 
 
     public Long getId() {
@@ -217,6 +226,31 @@ public class Worker implements Serializable {
 
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
+    }
+
+
+    public Boolean getApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(Boolean approved) {
+        isApproved = approved;
+    }
+
+    public List<ActivationCode> getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(List<ActivationCode> activationCode) {
+        this.activationCode = activationCode;
+    }
+
+    public List<UserCredential> getUserCredential() {
+        return userCredential;
+    }
+
+    public void setUserCredential(List<UserCredential> userCredential) {
+        this.userCredential = userCredential;
     }
 
 

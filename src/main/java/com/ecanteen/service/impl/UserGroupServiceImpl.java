@@ -1,10 +1,11 @@
-package com.ecanteen.service;
+package com.ecanteen.service.impl;
 
 
 import com.ecanteen.domain.UserGroup;
 import com.ecanteen.repository.UserGroupRepository;
 
 
+import com.ecanteen.service.UserGroupService;
 import com.ecanteen.service.dto.UserGroupDTO;
 import com.ecanteen.service.mapper.UserGroupMapper;
 import org.slf4j.Logger;

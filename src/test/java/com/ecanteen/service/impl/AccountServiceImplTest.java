@@ -2,8 +2,7 @@ package com.ecanteen.service.impl;
 
 import com.ecanteen.domain.Account;
  import com.ecanteen.repository.AccountRepository;
- import com.ecanteen.service.AccountServiceImpl;
- import com.ecanteen.service.dto.AccountDTO;
+import com.ecanteen.service.dto.AccountDTO;
  import com.ecanteen.service.mapper.AccountMapper;
  import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;

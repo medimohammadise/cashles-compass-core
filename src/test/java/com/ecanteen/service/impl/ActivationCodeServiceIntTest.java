@@ -3,7 +3,6 @@ package com.ecanteen.service.impl;
 
 import com.ecanteen.domain.ActivationCode;
  import com.ecanteen.repository.ActivationCodeRepository;
- import com.ecanteen.service.ActivationCodeServiceImpl;
 import com.ecanteen.service.dto.ActivationCodeDTO;
  import com.ecanteen.service.mapper.ActivationCodeMapper;
  import org.junit.jupiter.api.BeforeEach;

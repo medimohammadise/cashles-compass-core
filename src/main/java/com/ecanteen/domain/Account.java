@@ -1,11 +1,15 @@
 package com.ecanteen.domain;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -36,6 +40,10 @@ public class Account implements Serializable {
     @Column(name = "modifiedDate")
     private ZonedDateTime modifiedDate;
 
+
+    @JoinColumn(name = "Parent_Id")
+    @OneToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    private Parent parent;
 
     public Long getId() {
         return id;
@@ -101,6 +109,15 @@ public class Account implements Serializable {
     }
     public void setModifiedDate(ZonedDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
+    }
+
+    public void setParent(Parent parent) {
+        this.parent = parent;
+    }
+
+
+    public Parent getParent() {
+        return parent;
     }
 
     @Override

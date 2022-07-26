@@ -3,7 +3,6 @@ package com.ecanteen.service.impl;
 
 import com.ecanteen.domain.UserCredential;
 import com.ecanteen.repository.UserCredentialRepository;
-import com.ecanteen.service.UserCredentialServiceImpl;
 import com.ecanteen.service.dto.UserCredentialDTO;
 import com.ecanteen.service.mapper.UserCredentialMapper;
 import org.junit.jupiter.api.BeforeEach;
