@@ -2,25 +2,25 @@ package com.ecanteen.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * A Order
  */
 
 @Entity
-@Table(name = "order")
+@Table(name = "foodOrder")
 public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
@@ -37,9 +37,9 @@ public class Order implements Serializable {
     private ZonedDateTime modifiedDate;
 
 
-//    @ManyToOne(optional = false)
-//    @JoinColumn(name = "Student_Id")
-//    private Student student;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Student_Id")
+    private Student student;
 
 
 
@@ -115,13 +115,13 @@ public class Order implements Serializable {
     }
 
 
-//    public Student getStudent() {
-//        return student;
-//    }
-//
-//    public void setStudent(Student student) {
-//        this.student = student;
-//    }
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
 
 

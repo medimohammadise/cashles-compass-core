@@ -4,8 +4,12 @@ import com.ecanteen.domain.School;
 import com.ecanteen.repository.SchoolRepository;
 import com.ecanteen.service.SchoolService;
 import com.ecanteen.service.dto.SchoolDTO;
+import com.ecanteen.service.mapper.SchoolMapper;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,18 +24,61 @@ public class SchoolServiceImpl implements SchoolService {
 
     private final SchoolRepository schoolRepository;
 
+    private final SchoolMapper schoolMapper;
 
-    public SchoolServiceImpl(SchoolRepository schoolRepository) {
+    public SchoolServiceImpl(SchoolRepository schoolRepository, SchoolMapper schoolMapper) {
         this.schoolRepository = schoolRepository;
-    }
-
-    public School save(School school) {
-        log.debug("Request to save School : {}", school);
-        return schoolRepository.save(school);
+        this.schoolMapper = schoolMapper;
     }
 
     @Override
     public SchoolDTO save(SchoolDTO schoolDTO) {
-        return null;
+        log.debug("Request to save School : {}", schoolDTO);
+        School school = schoolMapper.toEntity(schoolDTO);
+        school = schoolRepository.save(school);
+        return schoolMapper.toDto(school);
+    }
+
+    @Override
+    public SchoolDTO update(SchoolDTO schoolDTO) {
+        log.debug("Request to save School : {}", schoolDTO);
+        School school = schoolMapper.toEntity(schoolDTO);
+        school = schoolRepository.save(school);
+        return schoolMapper.toDto(school);
+    }
+
+    @Override
+    public Optional<SchoolDTO> partialUpdate(SchoolDTO schoolDTO) {
+        log.debug("Request to partially update School : {}", schoolDTO);
+
+        return schoolRepository
+            .findById(schoolDTO.getId())
+            .map(existingSchool -> {
+                schoolMapper.partialUpdate(existingSchool, schoolDTO);
+
+                return existingSchool;
+            })
+            .map(schoolRepository::save)
+            .map(schoolMapper::toDto);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<SchoolDTO> findAll(Pageable pageable) {
+        log.debug("Request to get all Schools");
+        return schoolRepository.findAll(pageable).map(schoolMapper::toDto);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<SchoolDTO> findOne(Long id) {
+        log.debug("Request to get School : {}", id);
+        return schoolRepository.findById(id).map(schoolMapper::toDto);
+    }
+
+    @Override
+    public void delete(Long id) {
+        log.debug("Request to delete School : {}", id);
+        schoolRepository.deleteById(id);
     }
 }

@@ -1,15 +1,9 @@
 package com.ecanteen.domain;
 
-import com.ecanteen.domain.enumeration.ROLE;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
-import java.util.List;
 import javax.persistence.*;
-import javax.validation.Constraint;
 
-/**
- * A School.
- */
 @Entity
 @Table(name = "school")
 public class School implements Serializable {
@@ -21,7 +15,6 @@ public class School implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     @Column(name = "id")
     private Long id;
-
 
     @Column(name = "name")
     private String name;
@@ -50,19 +43,6 @@ public class School implements Serializable {
     @Column(name = "modified_by")
     private String modifiedBy;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role")
-    private ROLE role;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Parent> parents = null;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "Parent_Id")
-    private Parent parent;
-
-    // jhipster-needle-entity-add-field - JHipster will add fields here
-
     public Long getId() {
         return this.id;
     }
@@ -72,8 +52,9 @@ public class School implements Serializable {
         return this;
     }
 
-    public void setId(Long id) {
+    public long setId(Long id) {
         this.id = id;
+        return 0;
     }
 
     public String getName() {
@@ -191,31 +172,6 @@ public class School implements Serializable {
 
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
-    }
-
-
-    public ROLE getRole() {
-        return role;
-    }
-
-    public void setRole(ROLE role) {
-        this.role = role;
-    }
-
-    public List<Parent> getParents() {
-        return parents;
-    }
-
-    public void setParents(List<Parent> parents) {
-        this.parents = parents;
-    }
-
-    public Parent getParent() {
-        return parent;
-    }
-
-    public void setParent(Parent parent) {
-        this.parent = parent;
     }
 
 

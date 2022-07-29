@@ -91,19 +91,19 @@ liquibase {
     activities {
         main {
             driver "org.postgresql.Driver"
-            url "jdbc:postgresql://localhost:5432/e_canteen"
-            username "postgres"
-            password "1234"
-            changeLogFile "src/main/resources/config/liquibase/liquibase-changelog.xml"
+            url "jdbc:postgresql://localhost:5432/schooldb"
+            username "school-user"
+            password "secret"
+            changeLogFile "src/main/resources/db.changelog/changelog-master.xml"
             defaultSchemaName ""
             logLevel "debug"
             classpath "src/main/resources/"
         }
         diffLog {
             driver "org.postgresql.Driver"
-            url "jdbc:postgresql://localhost:5432/e_canteen"
-            username "postgres"
-            password "1234"
+            url "jdbc:postgresql://localhost:5432/schooldb"
+            username "school-user"
+            password "secret"
             changeLogFile project.ext.diffChangelogFile
             referenceUrl "hibernate:spring:com.mycompany.myapp.domain?dialect=tech.jhipster.domain.util.FixedPostgreSQL10Dialect&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
             defaultSchemaName ""

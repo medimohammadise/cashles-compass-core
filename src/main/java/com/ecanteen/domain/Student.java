@@ -103,8 +103,8 @@ public class Student implements Serializable {
     private ROLE role;
 
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    private List<Order> orders = null;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Order> orders = null;
 
     public Long getId() {
         return id;
@@ -300,13 +300,13 @@ public class Student implements Serializable {
         return this;
     }
 
-//    public List<Order> getOrders() {
-//        return orders;
-//    }
-//
-//    public void setOrders(List<Order> orders) {
-//        this.orders = orders;
-//    }
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 
     @Override
     public boolean equals(Object o) {
