@@ -31,7 +31,7 @@ public class LiquibaseConfiguration {
     @Bean
     public SpringLiquibase liquibase()   {
 
-        var liquibase = new SpringLiquibase();
+        SpringLiquibase liquibase = new SpringLiquibase();
         liquibase.setDataSource(dataSource);
         liquibase.setChangeLog(liquibaseProperties.getChangeLog());
 

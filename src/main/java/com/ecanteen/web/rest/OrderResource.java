@@ -1,9 +1,11 @@
 package com.ecanteen.web.rest;
 
+
+
+
+
 import com.ecanteen.repository.OrderRepository;
-
 import com.ecanteen.service.OrderService;
-
 import com.ecanteen.service.dto.OrderDTO;
 
 import com.ecanteen.web.rest.errors.BadRequestAlertException;
@@ -34,13 +36,13 @@ public class OrderResource {
     private static final String ENTITY_NAME = "order";
     private final Logger log = LoggerFactory.getLogger(OrderResource.class);
 
-    private final  OrderService OrderService;
+    private final OrderService orderService;
 
-    private final  OrderRepository OrderRepository;
+    private final OrderRepository orderRepository;
     @Autowired
-    public OrderResource(OrderService OrderService, OrderRepository OrderRepository) {
-        this.OrderService = OrderService;
-        this.OrderRepository = OrderRepository;
+    public OrderResource(OrderService orderService, OrderRepository orderRepository) {
+        this.orderService = orderService;
+        this.orderRepository = orderRepository;
     }
 
     /**
@@ -55,7 +57,7 @@ public class OrderResource {
         if (orderDTO.getId() != null) {
             throw new BadRequestAlertException("A new order cannot already have an ID", ENTITY_NAME, "id-exists");
         }
-        OrderDTO result = OrderService.save(orderDTO);
+        OrderDTO result = orderService.save(orderDTO);
         return ResponseEntity
             .created(new URI("/api/orders/" + result.getId()))
             .body(result);
@@ -69,7 +71,7 @@ public class OrderResource {
      */
     @GetMapping("/orders")
     public ResponseEntity<List<OrderDTO>> getAllOrders(Pageable pageable) {
-        Page<OrderDTO> page = OrderService.findAll(pageable);
+        Page<OrderDTO> page = orderService.findAll(pageable);
         return ResponseEntity.ok().body(page.getContent());
     }
 
@@ -96,11 +98,11 @@ public class OrderResource {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!OrderRepository.existsById(id)) {
+        if (!orderRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        OrderDTO result = OrderService.update(orderDTO);
+        OrderDTO result = orderService.update(orderDTO);
         return ResponseEntity
             .ok()
             .body(result);
@@ -114,7 +116,7 @@ public class OrderResource {
     @DeleteMapping("/orders/{id}")
     public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
         log.debug("REST request to delete order : {}", id);
-        OrderService.delete(id);
+        orderService.delete(id);
         return ResponseEntity
             .noContent()
             .build();
